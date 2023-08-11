@@ -10,10 +10,13 @@ const Formulario = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        
+        // Validacion Formulario
 
-
-        console.log('Enviando formulario...')
+        if ([nombre, propietario, email, fecha, sintomas].includes('')) {
+            console.log('Hay al menos un campo vacio.')
+        } else {
+            console.log('Todos los campos completos. Enviando formulario..')
+        }
     }
 
 
