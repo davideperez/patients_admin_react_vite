@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Formulario = () => {
+const Formulario = ({ pacientes, setPacientes }) => {
     const [nombre, setNombre] = useState('')
     const [propietario, setPropietario] = useState('')
     const [email, setEmail] = useState('')
@@ -18,11 +18,31 @@ const Formulario = () => {
             console.log('Hay al menos un campo vacio.')
             setError(true)
             return
-        }
+        }     
         
         setError(false)
-    }
+        
+        // Creacion de Objeto Paciente
 
+        const objetoPaciente = {
+            nombre,
+            propietario,
+            email,
+            fecha,
+            sintomas
+        }
+
+        setPacientes([... pacientes, objetoPaciente])
+
+        //Reiniciar el form
+
+        setNombre('')
+        setPropietario('')
+        setEmail('')
+        setFecha('')
+        setSintomas('')
+
+    }
 
     return (
         <div className=" md:w-1/2 lg:w-2/5 mx-5">
