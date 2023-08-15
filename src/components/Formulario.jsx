@@ -19,7 +19,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
             console.log('Hay al menos un campo vacio.')
             setError(true)
             return
-        }     
+        }
         
         setError(false)
         
