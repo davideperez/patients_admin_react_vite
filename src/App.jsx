@@ -4,9 +4,21 @@ import Header from "./components/Header"
 import ListadoPacientes from "./components/ListadoPacientes"
 
 function App() {
-  const [ pacientes, setPacientes ] = useState([])
+  const [ pacientes, setPacientes ] = useState([JSON.parse(localStorage.getItem('pacientes')) ?? []])
   const [ paciente, setPaciente ] = useState({})
 
+ //Loads the last pacientes array from localstorage to the react state.
+ 
+useEffect(()=>{
+  const obtenerLS = () => {
+    const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? []
+    setPacientes(pacientesLS)
+  }
+
+  obtenerLS()
+},[])
+ 
+  //Saves in localStorage the pacientes array, each time it is modified.
   useEffect(()=> {
     localStorage.setItem('pacientes', JSON.stringify( pacientes ))
   },[pacientes])
